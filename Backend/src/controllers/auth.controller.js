@@ -19,7 +19,7 @@ async function registerUserController(req, res) {
     }
 
     const isUserAlreadyExists = await userModel.findOne({
-        $or: [ { username }, { email } ]
+        $or: [{ username }, { email }]
     })
 
     if (isUserAlreadyExists) {
@@ -37,13 +37,17 @@ async function registerUserController(req, res) {
     })
 
     const token = jwt.sign(
-        { id: user._id, username: user.username },
+        {
+            id: user._id,
+            username: user.username
+        },
         process.env.JWT_SECRET,
-        { expiresIn: "1d" }
+        {
+            expiresIn: "1d"
+        }
     )
 
     res.cookie("token", token)
-
 
     res.status(201).json({
         message: "User registered successfully",
@@ -53,7 +57,6 @@ async function registerUserController(req, res) {
             email: user.email
         }
     })
-
 }
 
 
@@ -83,12 +86,18 @@ async function loginUserController(req, res) {
     }
 
     const token = jwt.sign(
-        { id: user._id, username: user.username },
+        {
+            id: user._id,
+            username: user.username
+        },
         process.env.JWT_SECRET,
-        { expiresIn: "1d" }
+        {
+            expiresIn: "1d"
+        }
     )
 
     res.cookie("token", token)
+
     res.status(200).json({
         message: "User loggedIn successfully.",
         user: {
@@ -119,6 +128,7 @@ async function logoutUserController(req, res) {
     })
 }
 
+
 /**
  * @name getMeController
  * @description get the current logged in user details.
@@ -128,8 +138,6 @@ async function getMeController(req, res) {
 
     const user = await userModel.findById(req.user.id)
 
-
-
     res.status(200).json({
         message: "User details fetched successfully",
         user: {
@@ -138,7 +146,6 @@ async function getMeController(req, res) {
             email: user.email
         }
     })
-
 }
 
 

@@ -101,12 +101,12 @@ project-root/
 │
 ├── Backend/
 │   ├── src/
+│   │   ├── config/
 │   │   ├── controllers/
-│   │   ├── routes/
+│   │   ├── middlewares/
 │   │   ├── models/
-│   │   ├── services/
-│   │   ├── middleware/
-│   │   └── utils/
+│   │   ├── routes/
+│   │   └── services/
 │
 └── README.md
 ```
@@ -212,6 +212,6 @@ View skill gaps, interview questions, and preparation recommendations.
 
 ---
 
-## 📄 License
+## 👨‍💻 Author
 
-This project is licensed under the MIT License.
+Built with ❤️ using React, Node.js, Express, MongoDB, and Google Gemini AI.
